@@ -36,6 +36,11 @@ cask "android-cli" do
   binary "android"
 
   postflight do
+    if OS.mac?
+      system_command "/usr/bin/xattr",
+                     args:         ["-d", "com.apple.quarantine", "#{staged_path}/android"],
+                     must_succeed: false
+    end
     system_command "#{staged_path}/android",
                    env: { "ANDROID_CLI_FRESH_INSTALL" => "1" }
   end
