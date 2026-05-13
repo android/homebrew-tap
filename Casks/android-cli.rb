@@ -17,10 +17,16 @@ cask "android-cli" do
   sha256 :no_check
 
   on_macos do
-    depends_on arch: :arm64
+    on_arm do
+      url "https://dl.google.com/android/cli/latest/darwin_arm64/android",
+          verified: "dl.google.com"
+    end
+    on_intel do
+      url "https://dl.google.com/android/cli/latest/darwin_x86_64/android",
+          verified: "dl.google.com"
+    end
+
     depends_on macos: ">= :monterey"
-    url "https://dl.google.com/android/cli/latest/darwin_arm64/android",
-        verified: "dl.google.com"
   end
 
   on_linux do
