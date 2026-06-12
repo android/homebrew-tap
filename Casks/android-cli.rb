@@ -26,7 +26,7 @@ cask "android-cli" do
           verified: "dl.google.com"
     end
 
-    depends_on macos: ">= :monterey"
+    depends_on macos: :monterey
   end
 
   on_linux do
